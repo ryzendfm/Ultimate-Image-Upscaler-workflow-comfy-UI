@@ -1,0 +1,573 @@
+{
+  "last_node_id": 14,
+  "last_link_id": 21,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        3068.483154296875,
+        709.2694091796875
+      ],
+      "size": [
+        340.20001220703125,
+        46
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 2
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        3078.10595703125,
+        605.3597412109375
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            2
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4xRealWebPhoto_v3_atd.pth"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "ImageScaleBy",
+      "pos": [
+        3084.19775390625,
+        799.776123046875
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScaleBy"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        2
+      ]
+    },
+    {
+      "id": 13,
+      "type": "ImageUpscaleWithModel",
+      "pos": [
+        3077.937744140625,
+        931.6185302734375
+      ],
+      "size": [
+        340.20001220703125,
+        46
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 20
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageUpscaleWithModel"
+      }
+    },
+    {
+      "id": 8,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        3454.893310546875,
+        622.615234375
+      ],
+      "size": [
+        754.3269653320312,
+        614.9854125976562
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 8,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 21,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dilpb_00003_.png&type=temp&subfolder=&rand=0.3897379489042816"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dilpb_00004_.png&type=temp&subfolder=&rand=0.6125925160929933"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "type": "UltimateSDUpscale",
+      "pos": [
+        2728.26416015625,
+        605.1279296875
+      ],
+      "size": [
+        315,
+        614
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 17
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 18
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 15
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            12
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscale"
+      },
+      "widgets_values": [
+        2,
+        0,
+        "randomize",
+        20,
+        8,
+        "euler",
+        "normal",
+        0.2,
+        "Linear",
+        512,
+        512,
+        8,
+        32,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 14,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        3079.31201171875,
+        1022.2435302734375
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4xUltrasharp_4xUltrasharpV10.pt"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2272.322509765625,
+        1018.7013549804688
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            17,
+            18
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        2301.707275390625,
+        621.4862060546875
+      ],
+      "size": [
+        315,
+        314.0000305175781
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8,
+            13
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "UniversalUpscaler_53f9eeea-e6b4-4248-8e83-6848819b793e.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1949.6448974609375,
+        717.339111328125
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            16
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            15
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "dreamshaperXL_v21TurboDPMSDE.safetensors"
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      3,
+      0,
+      2,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      3,
+      2,
+      0,
+      4,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      1,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      10,
+      0,
+      2,
+      1,
+      "IMAGE"
+    ],
+    [
+      13,
+      1,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      11,
+      0,
+      10,
+      1,
+      "MODEL"
+    ],
+    [
+      15,
+      11,
+      2,
+      10,
+      4,
+      "VAE"
+    ],
+    [
+      16,
+      11,
+      1,
+      12,
+      0,
+      "CLIP"
+    ],
+    [
+      17,
+      12,
+      0,
+      10,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      18,
+      12,
+      0,
+      10,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      19,
+      4,
+      0,
+      13,
+      1,
+      "IMAGE"
+    ],
+    [
+      20,
+      14,
+      0,
+      13,
+      0,
+      "UPSCALE_MODEL"
+    ],
+    [
+      21,
+      13,
+      0,
+      8,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5730855330116804,
+      "offset": [
+        -1523.251039061729,
+        -544.1689544785296
+      ]
+    },
+    "node_versions": {
+      "comfy-core": "0.3.12",
+      "rgthree-comfy": "5d771b8b56a343c24a26e8cea1f0c87c3d58102f",
+      "comfyui_ultimatesdupscale": "ff3fdfeee03de46d4462211cffd165d27155e858"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
